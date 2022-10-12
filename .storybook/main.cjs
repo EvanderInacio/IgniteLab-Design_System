@@ -15,7 +15,7 @@ module.exports = {
   "features": {
     "storyStoreV7": true
   },
-  
+
   viteFinal: (config, { configType }) => {
     console.log('teste')
     if (configType === 'PRODUCTION') {
