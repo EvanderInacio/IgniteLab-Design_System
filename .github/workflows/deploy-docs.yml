@@ -19,18 +19,12 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: |
-          if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile --legacy-peer-deps
-          elif [ -e package-lock.json ]; then
-          npm ci --legacy-peer-deps
-          else
-          npm i --legacy-peer-deps
-          fi
+        run: npm ci --legacy-peer-deps
+
       - name: Build Storybook
-        run: yarn run build-storybook
+        run: npm run build-storybook
 
       - name: Deploy Storybook
-        run: yarn run deploy-storybook -- --ci --existing-output-dir=storybook-static
+        run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
